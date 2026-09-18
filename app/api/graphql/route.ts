@@ -1,14 +1,18 @@
+import { GRAPHQL_ENDPOINT } from '@/lib/graphql-client';
+
 export async function POST(request: Request) {
-  const body = await request.json();
+  const contentType = request.headers.get('content-type') ?? 'application/json';
+  const body = await request.arrayBuffer();
 
-  const response = await fetch(
-    '/api/graphql',
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    }
-  );
+  const response = await fetch(GRAPHQL_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': contentType },
+    body,
+  });
 
-  return response;
+  const responseBody = await response.arrayBuffer();
+  return new Response(responseBody, {
+    status: response.status,
+    headers: { 'Content-Type': response.headers.get('content-type') ?? 'application/json' },
+  });
 }

@@ -1,4 +1,4 @@
-import { GRAPHQL_ENDPOINT } from './graphql-client';
+import { API_GRAPHQL_ENDPOINT } from './graphql-client';
 
 const UPLOAD_FILE_MUTATION = `
   mutation uploadFile($file: Upload!) {
@@ -14,7 +14,7 @@ export async function uploadImage(file: File): Promise<string> {
   formData.append('map', JSON.stringify({ '0': ['variables.file'] }));
   formData.append('0', file);
 
-  const response = await fetch(GRAPHQL_ENDPOINT, {
+  const response = await fetch(API_GRAPHQL_ENDPOINT, {
     method: 'POST',
     body: formData,
   });
