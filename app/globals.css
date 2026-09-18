@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'SUIT';
+  src: url('/fonts/SUIT-Variable.woff2') format('woff2');
+}
+
+:root {
+  /* Main */
+  --color-main: #6400FF;
+  /* BT */
+  --color-button-primary: #6400FF;
+  --color-button-secondary: #999999;
+  /* Font */
+  --color-text-primary: #000000;
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #999999;
+
+  --font-primary: 'SUIT', sans-serif;
+
+  /* Border */
+  --color-border: #E5E5E5;
+  
+  /* BG */
+  --color-bg: #FAFAFA;  
+}
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 20px;
+  padding-top: 20px;
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  gap: 20px;
+}
+
+button {
+  width: 150px;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
